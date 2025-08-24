@@ -1,0 +1,7 @@
+# Neovim cache/state (do NOT commit these)
+.pack/               # old setups
+plugin/packer_compiled.lua
+# lazy.nvim puts cache/state outside config, but just in case:
+state.json
+# OS noise
+.DS_Store

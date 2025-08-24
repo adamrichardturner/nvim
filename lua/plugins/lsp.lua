@@ -20,7 +20,6 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "folke/neodev.nvim",
-      "jose-elias-alvarez/typescript.nvim",
     },
     config = function()
       require("neodev").setup({})
@@ -45,21 +44,11 @@ return {
         end, "Format buffer")
       end
 
-      -- TypeScript (with extra goodies if typescript.nvim is available)
-      local ok_ts, typescript = pcall(require, "typescript")
-      if ok_ts then
-        typescript.setup({
-          server = {
-            on_attach = on_attach,
-            capabilities = capabilities,
-          },
-        })
-      else
-        lspconfig.tsserver.setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-        })
-      end
+      -- TypeScript
+      lspconfig.ts_ls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
 
       -- ESLint
       lspconfig.eslint.setup({

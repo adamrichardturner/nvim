@@ -25,7 +25,11 @@ return {
       { "<leader>t", "<cmd>NvimTreeToggle<CR>", desc = "Tree toggle" },
       { "<leader>o", "<cmd>NvimTreeFindFile<CR>", desc = "Tree reveal" },
     },
-    opts = { update_focused_file = { enable = true } },
+    opts = {
+      update_focused_file = { enable = true },
+      view = { width = 34 },
+      renderer = { group_empty = true, highlight_git = true },
+    },
   },
 
   -- Telescope
@@ -52,7 +56,9 @@ return {
       },
       highlight = { enable = true },
       indent = { enable = true },
+      autotag = { enable = true },
     },
+    dependencies = { "windwp/nvim-ts-autotag" },
   },
 
   -- Git signs
@@ -96,10 +102,8 @@ return {
     },
   },
 
-  -- LSP setup
+  -- Import LSP + completion configs
   { import = "plugins.lsp" },
-
-  -- Completion setup
   { import = "plugins.cmp" },
 }
 
